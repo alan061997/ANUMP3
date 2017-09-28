@@ -1,7 +1,4 @@
-from sympy.solvers import solve
-from sympy import Symbol
 import math
-
 
 def is_number(num):
 	try:
@@ -84,20 +81,21 @@ def c_values_list(delta, h):
 	
 def ecuacion(c_values, x_list, x_new):
 	number_val = 0
-	x = Symbol('x')
 	eq_str = ""
+	eq_str2 = ""
 	ans = 0
 	
 	for i in range(len(c_values)):
 		eq_str += "" + (str(c_values[number_val]))
 		for j in range(0, number_val):
-			eq_str += "(" + str(x_new) + "-" + str(x_list[j]) + ")"
+			eq_str += "(" + str(x_new) + " - " + str(x_list[j]) + ")"
 		number_val += 1
 		if i < (len(c_values)-1):
-			eq_str += "+"
+			eq_str += " + "
 		else:
 			eq_str += ""
-			
+	
+	print ("y({}) = {}".format(x_new, eq_str))	
 	eq_str = eq_str.split("+")
 	for i in range(len(eq_str)):
 		eq_str[i] = eq_str[i].replace('(', "*(")
